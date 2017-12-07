@@ -1,0 +1,25 @@
+<!DOCTYPE html >
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+<meta charset="UTF-8"></meta>
+<title>Insert title here</title>
+</head>
+<body>
+okok<br/>
+<!--  获取用户的信息 -->
+Logged user: <span sec:authentication="name">Bob</span><br/>
+Roles: <span sec:authentication="principal.authorities">[ROLE_USER, ROLE_ADMIN]</span>
+<!-- 匿名就可以访问 -->
+<ul sec:authorize="isAnonymous()"
+	class="nav navbar-nav navbar-right">
+	<li><a th:href="@{/login}">Log In</a></li>
+</ul>
+<!-- 权限认证 :已认证通过-->
+<ul sec:authorize="isAuthenticated()"
+	class="nav navbar-nav navbar-right">
+	<li><a th:href="@{/logout}">Log out</a></li>
+</ul>
+</body>
+</html>
